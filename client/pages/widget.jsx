@@ -4,30 +4,36 @@ export default class Widget extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: ' ',
-      lastName: ' ',
-      creditCard: ' ',
-      amount: ' ',
-      creditView: true
+      donationInfo: {
+        firstName: '',
+        lastName: '',
+        creditCard: '',
+        amount: '',
+      },
+      creditView: false
     };
     this.donationStage = this.donationStage.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.onChange = this.onChange.bind(this)
+    this.submit = this.submit.bind(this)
+
   };
   handleClick(amount) {
     event.preventDefault();
-    this.setState({ 'amount': amount, 'creditCard': true })
+    this.setState({ 'amount': amount, 'creditView': true })
   }
   onChange() {
     //FIX THE ISSUE WITH THE SAVING TO STATE     //
-    event.preventDefault();
     const parameter = event.target.name;
     const value = event.target.value;
-    console.log(parameter,value);
-    this.setState({parameter: value})
+    const donationInfo = this.state.donationInfo;
+    donationInfo[parameter] = value;
+    this.setState({donationInfo})
   }
   submit(){
-
+    event.preventDefault();
+    console.log(this.state.donationInfo)
+    this.setState({'creditView': 'thankYou'})
   }
   donationStage() {
     if (this.state.creditView === true) {
@@ -36,19 +42,19 @@ export default class Widget extends React.Component {
           <div className="row">
             <div className="col d-flex flex-column">
               <label htmlFor="firstName">First Name</label>
-              <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} />
+              <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} required/>
             </div>
           </div>
           <div className="row">
             <div className="col d-flex flex-column">
               <label htmlFor="lastName">Last Name</label>
-              <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} />
+              <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} required/>
             </div>
           </div>
           <div className="row">
             <div className="col d-flex flex-column">
               <label htmlFor="creditCard">CC #</label>
-              <input type="number" value={this.state.creditCard} name='creditCard' onChange={this.onChange} />
+              <input type="number" value={this.state.creditCard} name='creditCard' onChange={this.onChange} required/>
             </div>
           </div>
           <div className="row mt-3">
@@ -58,7 +64,7 @@ export default class Widget extends React.Component {
           </div>
         </form>
       )
-    }
+    } else if (this.state.creditView === false) {
     return (
       <div className='container'>
         <div className="row d-flex align-items-center justify-content-center">
@@ -79,22 +85,18 @@ export default class Widget extends React.Component {
         </div>
       </div>
     )
-
+    } else {
+      return (
+        <div className="col">
+          <h2>Thank you for your Donation!</h2>
+        </div>
+      )
+    }
   }
   render() {
     console.log(this.state)
     return (
       <div className="container-fluid">
-
-        <div className="row d-flex">
-          <div className="col">
-            <h4>Donate Now</h4>
-          </div>
-          <div className="col-sm">
-            <h2>X</h2>
-          </div>
-        </div>
-
         <div className="row">
           <div className="col">
             <h1>Donate to Petlanthropy</h1>
