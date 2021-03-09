@@ -8,7 +8,7 @@ export default class Widget extends React.Component {
       lastName: ' ',
       creditCard: ' ',
       amount: ' ',
-      creditView: false
+      creditView: true
     };
     this.donationStage = this.donationStage.bind(this)
   };
@@ -17,41 +17,47 @@ export default class Widget extends React.Component {
     this.setState({ 'amount': amount, 'creditCard': true })
   }
   onChange() {
+    event.preventDefault();
+    const parameter = event.target.name;
+    this.setState({parameter:event.target.value})
+  }
+  submit(){
 
   }
   donationStage() {
     if (this.state.creditView === true) {
       return (
-        <form action="#" className='form-group'>
+        <div className='container'>
           <div className="row">
-            <div className="col">
+            <div className="col d-flex flex-column">
               <label htmlFor="firstName">First Name</label>
               <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} />
             </div>
           </div>
-          <div className="form-group">
-            <div className="row">
-              <div className="col">
-                <label htmlFor="lastName">Last Name</label>
-                <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} />
-              </div>
+          <div className="row">
+            <div className="col d-flex flex-column">
+              <label htmlFor="lastName">Last Name</label>
+              <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} />
             </div>
           </div>
-          <div className="form-group">
-            <div className="row">
-              <div className="col">
-                <label htmlFor="creditCard">CC #</label>
-                <input type="number" value={this.state.creditCard} onChange={this.onChange} />
-              </div>
+          <div className="row">
+            <div className="col d-flex flex-column">
+              <label htmlFor="creditCard">CC #</label>
+              <input type="number" value={this.state.creditCard} name='creditCard' onChange={this.onChange} />
             </div>
           </div>
-        </form>
+          <div className="row mt-3">
+            <div className="col">
+              <button className='btn btn-primary btn-lg' onClick={this.submit}> Donate! </button>
+            </div>
+          </div>
+        </div>
       )
     }
     return (
       <div className='container'>
         <div className="row d-flex align-items-center justify-content-center">
-          <div className="col text-center">
+          <div className="col">
             <button className='btn btn-primary' onClick={() => { this.handleClick(10) }}>$10</button>
           </div>
           <div className="col">
