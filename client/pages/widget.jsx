@@ -10,16 +10,21 @@ export default class Widget extends React.Component {
       amount: ' ',
       creditView: true
     };
-    this.donationStage = this.donationStage.bind(this)
+    this.donationStage = this.donationStage.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.onChange = this.onChange.bind(this)
   };
   handleClick(amount) {
     event.preventDefault();
     this.setState({ 'amount': amount, 'creditCard': true })
   }
   onChange() {
+    //FIX THE ISSUE WITH THE SAVING TO STATE     //
     event.preventDefault();
     const parameter = event.target.name;
-    this.setState({parameter:event.target.value})
+    const value = event.target.value;
+    console.log(parameter,value);
+    this.setState({parameter: value})
   }
   submit(){
 
@@ -27,7 +32,7 @@ export default class Widget extends React.Component {
   donationStage() {
     if (this.state.creditView === true) {
       return (
-        <div className='container'>
+        <form className='container'>
           <div className="row">
             <div className="col d-flex flex-column">
               <label htmlFor="firstName">First Name</label>
@@ -51,7 +56,7 @@ export default class Widget extends React.Component {
               <button className='btn btn-primary btn-lg' onClick={this.submit}> Donate! </button>
             </div>
           </div>
-        </div>
+        </form>
       )
     }
     return (
@@ -79,9 +84,9 @@ export default class Widget extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <div className="container">
+      <div className="container-fluid">
 
-        <div className="row">
+        <div className="row d-flex">
           <div className="col">
             <h4>Donate Now</h4>
           </div>
