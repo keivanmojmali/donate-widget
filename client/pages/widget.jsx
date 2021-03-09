@@ -96,9 +96,15 @@ export default class Widget extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <div className="container-fluid">
-        <div className="row">
+      <div className="container-fluid p-3">
+        <div className="row border-bottom border-danger">
           <div className="col">
+            <img className='w-50 pb-2' src='https://static.wixstatic.com/media/577460_c902da9df2784a74bcba2e68f1dda16b~mv2.png/v1/fill/w_279,h_66,al_c,q_85,usm_0.66_1.00_0.01/Petlanthropy-Logo-2b.webp'
+            alt="Petlanthropy Logo"/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col text-center">
             <h1>Donate to Petlanthropy</h1>
           </div>
         </div>
@@ -106,7 +112,6 @@ export default class Widget extends React.Component {
         <div className="row">
           {this.donationStage()}
         </div>
-
 
       </div>
     )
