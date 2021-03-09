@@ -6,8 +6,9 @@ export default class Widget extends React.Component {
     this.state = {
       firstName: ' ',
       lastName: ' ',
+      creditCard: ' ',
       amount: ' ',
-      creditCard: true
+      creditView: false
     };
     this.donationStage = this.donationStage.bind(this)
   };
@@ -15,43 +16,57 @@ export default class Widget extends React.Component {
     event.preventDefault();
     this.setState({ 'amount': amount, 'creditCard': true })
   }
+  onChange() {
+
+  }
   donationStage() {
-    if (this.state.creditCard === true) {
+    if (this.state.creditView === true) {
       return (
-        <form action="#" className='form-container'>
+        <form action="#" className='form-group'>
           <div className="row">
             <div className="col">
               <label htmlFor="firstName">First Name</label>
               <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} />
             </div>
           </div>
-          <div className="row">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange}/>
-
+          <div className="form-group">
+            <div className="row">
+              <div className="col">
+                <label htmlFor="lastName">Last Name</label>
+                <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} />
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="row">
+              <div className="col">
+                <label htmlFor="creditCard">CC #</label>
+                <input type="number" value={this.state.creditCard} onChange={this.onChange} />
+              </div>
+            </div>
           </div>
         </form>
       )
     }
     return (
-      <form action="#" className='form-container'>
-        <div className="row">
-          <div className="col">
-            <button className='form-button' onClick={() => { this.handleClick(10) }}>$10</button>
+      <div className='container'>
+        <div className="row d-flex align-items-center justify-content-center">
+          <div className="col text-center">
+            <button className='btn btn-primary' onClick={() => { this.handleClick(10) }}>$10</button>
           </div>
           <div className="col">
-            <button className='form-button' onClick={() => { this.handleClick(30) }}>$30</button>
+            <button className='btn btn-primary' onClick={() => { this.handleClick(30) }}>$30</button>
           </div>
           <div className="col">
-            <button className='form-button' onClick={() => { this.handleClick(50) }}>$50</button>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <button className='form-button' onClick={() => this.handleClick('15 Monthly')}>$15 Monthly Donation</button>
+            <button className='btn btn-primary' onClick={() => { this.handleClick(50) }}>$50</button>
           </div>
         </div>
-      </form>
+        <div className="row text-center">
+          <div className="col">
+            <button className='btn btn-primary' onClick={() => this.handleClick('15 Monthly')}>$15 Monthly Donation</button>
+          </div>
+        </div>
+      </div>
     )
 
   }
