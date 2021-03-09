@@ -38,7 +38,7 @@ export default class Widget extends React.Component {
   donationStage() {
     if (this.state.creditView === true) {
       return (
-        <form className='container'>
+        <form className='.col'>
           <div className="row">
             <div className="col d-flex flex-column">
               <label htmlFor="firstName">First Name</label>
@@ -66,21 +66,21 @@ export default class Widget extends React.Component {
       )
     } else if (this.state.creditView === false) {
     return (
-      <div className='container'>
+      <div className='col'>
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col">
-            <button className='btn btn-primary' onClick={() => { this.handleClick(10) }}>$10</button>
+            <button className='btn w-100 btn-primary' onClick={() => { this.handleClick(10) }}>$10</button>
           </div>
           <div className="col">
-            <button className='btn btn-primary' onClick={() => { this.handleClick(30) }}>$30</button>
+            <button className='btn w-100 btn-primary' onClick={() => { this.handleClick(30) }}>$30</button>
           </div>
           <div className="col">
-            <button className='btn btn-primary' onClick={() => { this.handleClick(50) }}>$50</button>
+            <button className='btn w-100 btn-primary' onClick={() => { this.handleClick(50) }}>$50</button>
           </div>
         </div>
         <div className="row text-center">
           <div className="col">
-            <button className='btn btn-primary' onClick={() => this.handleClick('15 Monthly')}>$15 Monthly Donation</button>
+            <button className='btn w-100  btn-primary' onClick={() => this.handleClick('15 Monthly')}>$15 Monthly Donation</button>
           </div>
         </div>
       </div>
