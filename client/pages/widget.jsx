@@ -1,50 +1,63 @@
 import React from 'react';
 
 export default class Widget extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       firstName: ' ',
       lastName: ' ',
-      amount: ' ' ,
-      creditCard: false
+      amount: ' ',
+      creditCard: true
     };
     this.donationStage = this.donationStage.bind(this)
   };
-  handleClick(){
+  handleClick(amount) {
     event.preventDefault();
-    const amount = event.target.textContent;
-    this.setState({'amount': amount, 'creditCard': true})
+    this.setState({ 'amount': amount, 'creditCard': true })
   }
-  donationStage(){
-    if(this.state.creditCard === true) {
-      return //credit card information here
+  donationStage() {
+    if (this.state.creditCard === true) {
+      return (
+        <form action="#" className='form-container'>
+          <div className="row">
+            <div className="col">
+              <label htmlFor="firstName">First Name</label>
+              <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} />
+            </div>
+          </div>
+          <div className="row">
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange}/>
+
+          </div>
+        </form>
+      )
     }
     return (
       <form action="#" className='form-container'>
         <div className="row">
           <div className="col">
-            <button className='form-button' onClick={this.handleClick}>$10</button>
+            <button className='form-button' onClick={() => { this.handleClick(10) }}>$10</button>
           </div>
           <div className="col">
-            <button className='form-button' onClick={this.handleClick}>$30</button>
+            <button className='form-button' onClick={() => { this.handleClick(30) }}>$30</button>
           </div>
           <div className="col">
-            <button className='form-button' onClick={this.handleClick}>$50</button>
+            <button className='form-button' onClick={() => { this.handleClick(50) }}>$50</button>
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <button className='form-button' onClick={this.handleClick}>$15 Monthly Donation</button>
+            <button className='form-button' onClick={() => this.handleClick('15 Monthly')}>$15 Monthly Donation</button>
           </div>
         </div>
       </form>
     )
 
   }
-  render(){
+  render() {
     console.log(this.state)
-    return(
+    return (
       <div className="container">
 
         <div className="row">
