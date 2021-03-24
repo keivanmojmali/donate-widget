@@ -1,5 +1,5 @@
 {
-  "name": "final-project",
+  "name": "donation-widget",
   "version": "1.0.0",
   "private": true,
   "description": "A full stack JavaScript solo project.",
@@ -10,7 +10,6 @@
     "dev": "npm-run-all --silent --parallel dev:*",
     "dev:client": "webpack serve --mode=development",
     "dev:server": "nodemon server/index.js",
-    "db:import": "bash scripts/db-import.bash"
   },
   "husky": {
     "hooks": {
@@ -51,7 +50,6 @@
     "eslint-plugin-react": "^7.22.0",
     "file-loader": "^6.2.0",
     "htmlhint": "^0.14.2",
-    "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
     "multi-loader": "^0.1.0",
     "nodemon": "^2.0.6",
