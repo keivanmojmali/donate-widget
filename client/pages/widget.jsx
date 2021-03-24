@@ -53,7 +53,7 @@ export default class Widget extends React.Component {
           </div>
           <div className="row m-1">
             <div className="col d-flex flex-column">
-              <input type="number" value={this.state.creditCard} name='creditCard' onChange={this.onChange} required placeholder='Credit Card Number'/>
+              <input type="text" value={this.state.creditCard} name='creditCard' onChange={this.onChange} required placeholder='Credit Card Number'/>
             </div>
           </div>
           <div className="row m-1">

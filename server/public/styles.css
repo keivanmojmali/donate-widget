@@ -19,6 +19,18 @@
   color: black;
 }
 
+.square-button:hover {
+    cursor: pointer;
+  background-color: #DB307A;
+  color: white;
+}
+
+.bottom-rectangle:hover {
+    cursor: pointer;
+  background-color: #DB307A;
+  color: white;
+}
+
 .small-font {
   font-size: 10px;
 }
@@ -36,4 +48,12 @@
   cursor: pointer;
   background-color: white;
   color: #DB307A;
+}
+
+.main-container {
+  width: 400px;
+  height: 390px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
