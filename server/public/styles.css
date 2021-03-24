@@ -22,3 +22,18 @@
 .small-font {
   font-size: 10px;
 }
+
+.sub-button {
+  width: 50%;
+  height: 50px;
+  border: black solid 1px;
+  background-color: #DB307A;
+  color: white;
+
+}
+
+.sub-button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #DB307A;
+}

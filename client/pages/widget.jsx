@@ -34,32 +34,31 @@ export default class Widget extends React.Component {
     event.preventDefault();
     console.log(this.state.donationInfo)
     this.setState({ 'creditView': 'thankYou' })
+    const donateToPetlanthropyRow = document.querySelector('#donate');
+    donateToPetlanthropyRow.classList.add('d-none');
   }
   donationStage() {
     if (this.state.creditView === true) {
       return (
-        <form className='.col'>
-          <div className="row">
+        <form className='col d-flex flex-column justify-content-between'>
+          <div className="row m-1">
             <div className="col d-flex flex-column">
-              <label htmlFor="firstName">First Name</label>
-              <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} required />
+              <input type="text" className='form-input' name='firstName' value={this.state.firstName} onChange={this.onChange} required placeholder='Full Name' />
             </div>
           </div>
-          <div className="row">
+          <div className="row m-1">
             <div className="col d-flex flex-column">
-              <label htmlFor="lastName">Last Name</label>
-              <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} required />
+              <input type="text" className='form-input' name='lastName' value={this.state.lastName} onChange={this.onChange} required placeholder='Email' />
             </div>
           </div>
-          <div className="row">
+          <div className="row m-1">
             <div className="col d-flex flex-column">
-              <label htmlFor="creditCard">CC #</label>
-              <input type="number" value={this.state.creditCard} name='creditCard' onChange={this.onChange} required />
+              <input type="number" value={this.state.creditCard} name='creditCard' onChange={this.onChange} required placeholder='Credit Card Number'/>
             </div>
           </div>
-          <div className="row mt-3">
+          <div className="row m-1">
             <div className="col">
-              <button className='btn btn-primary btn-lg' onClick={this.submit}> Donate! </button>
+              <button className='sub-button' onClick={this.submit}> Donate! </button>
             </div>
           </div>
         </form>
@@ -87,7 +86,7 @@ export default class Widget extends React.Component {
       )
     } else {
       return (
-        <div className="col">
+        <div className="col m-5 ">
           <h2>Thank you for your Donation!</h2>
         </div>
       )
@@ -96,14 +95,14 @@ export default class Widget extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <div className="container-fluid p-3 h-100 m-0">
+      <div className="container-fluid p-3 h-100 m-0 d-flex flex-column align-items-between justify-content-between">
         <div className="row border-bottom border-danger m-0">
           <div className="col">
             <img className='w-50 pb-2' src='https://static.wixstatic.com/media/577460_c902da9df2784a74bcba2e68f1dda16b~mv2.png/v1/fill/w_279,h_66,al_c,q_85,usm_0.66_1.00_0.01/Petlanthropy-Logo-2b.webp'
               alt="Petlanthropy Logo" />
           </div>
         </div>
-        <div className="row m-0">
+        <div id='donate' className="row m-0">
           <div className="col text-center">
             <h1>Donate to Petlanthropy</h1>
           </div>
